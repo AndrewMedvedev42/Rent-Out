@@ -1,10 +1,8 @@
 const NavigationBar = () => {
     return (
-        <header>
-            <nav>
-                <button>Rent Out</button>
-            </nav>
-        </header>
+        <nav className="navigation-menu">
+            <button>Rent Out</button>
+        </nav>
     )
 }
 

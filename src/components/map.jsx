@@ -1,27 +1,20 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { ApartmentCard } from "./appartment-card";
 
 export const Map = () => {
     return (
-        <MapContainer id="map" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
-            <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <Marker position={[51.505, -0.09]}>
-                <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-                </Popup>
-            </Marker>
-            <Marker position={[51.505, -0.08]}>
-                <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-                </Popup>
-            </Marker>
-            <Marker position={[51.504, -0.085]}>
-                <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-                </Popup>
-            </Marker>
-        </MapContainer>
+        <section className="interactive-section">
+    `        <MapContainer className="map" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+                <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker position={[51.505, -0.09]}>
+                </Marker>
+            </MapContainer>
+            <article className="appartments-section">
+                <ApartmentCard/>
+            </article>
+        </section>
     )
 }
