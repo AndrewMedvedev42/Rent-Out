@@ -1,5 +1,5 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import { ApartmentCard } from "./appartment-card";
+import { ApartmentSection } from "./appartment-section";
 
 import firebase from "../util/firebase";
 import { useEffect, useState } from "react";
@@ -7,6 +7,7 @@ import 'firebase/compat/database'
 
 export const Map = () => {
     const [arrayOfNotes, setArrayOfNotes] = useState([])
+    const [Id, setId] = useState("-MrSeN9MJ2kG-0SsI75e")
 
     
 
@@ -22,8 +23,6 @@ export const Map = () => {
             setArrayOfNotes(array)
         })
     },[])
-    
-console.log(arrayOfNotes);
     return (
         <section className="interactive-section">
     `        <MapContainer className="map" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
@@ -32,19 +31,24 @@ console.log(arrayOfNotes);
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 {arrayOfNotes.length && (
-                    arrayOfNotes.map(item=>{
-                        return (<Marker position={[item["coordinates-1"], item["coordinates-2"]]}>
+                arrayOfNotes.map((item, index)=>{
+                    return (
+                        <Marker key={index} 
+                            position={item.coordinates}
+                            eventHandlers={{
+                                click: (e) => {
+                                    setId(item.itemKey)
+                                },
+                            }}>
                             <Popup>
-                                {item.desc}
+                                A pretty CSS3 popup. <br /> Easily customizable.
                             </Popup>
-                        </Marker>)
-                    })
-                )}
-
+                        </Marker>
+                    )
+                })
+            )}
             </MapContainer>
-            <article className="appartments-section">
-                <ApartmentCard/>
-            </article>
+            <ApartmentSection itemId={Id}/>
         </section>
     )
 }

@@ -1,7 +1,14 @@
+import { Link } from "react-router-dom";
+import { useState } from "react"
+import firebase from "../util/firebase";
+
 const NavigationBar = () => {
     return (
         <nav className="navigation-menu">
-            <button>Rent Out</button>
+            <Link to="/submit">
+                <button>Rent Out</button>
+            </Link>
+
         </nav>
     )
 }

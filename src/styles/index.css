@@ -24,12 +24,12 @@ body {
   width: 70%;
   height: 600px; }
 
-.main-container .interactive-section .appartments-section {
+.main-container .interactive-section .appartment-list {
   width: 30%;
   padding: 1rem;
   box-shadow: rgba(0, 0, 0, 0.219) 0px 0px 10px; }
 
-.main-container .interactive-section .appartments-section .appartment-card {
+.main-container .interactive-section .appartment-list .appartment-card {
   margin-top: 1rem;
   padding: 1rem;
   border: rgba(0, 0, 0, 0.219) 1px solid;
