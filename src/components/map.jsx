@@ -24,7 +24,7 @@ export const Map = () => {
     },[])
     return (
         <section className="interactive-section">
-    `        <MapContainer className="map" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+    `        <MapContainer className="map" center={[51.5029, -0.08]} zoom={14} scrollWheelZoom={false}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
