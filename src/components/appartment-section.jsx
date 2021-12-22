@@ -19,7 +19,6 @@ export const ApartmentSection = ({itemId}) => {
     },[itemId])
     return (
         <article className="appartment-list">
-            <h2>{itemId}</h2>
             {
                 note && (
                     note.apartments.map((item, index)=>{

@@ -3,7 +3,6 @@ import { ApartmentSection } from "./appartment-section";
 
 import firebase from "../util/firebase";
 import { useEffect, useState } from "react";
-import 'firebase/compat/database'
 
 export const Map = () => {
     const [arrayOfNotes, setArrayOfNotes] = useState([])
