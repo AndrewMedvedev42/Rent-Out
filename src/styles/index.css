@@ -7,14 +7,6 @@ body {
   justify-content: center;
   box-shadow: rgba(0, 0, 0, 0.219) 0px 5px 5px; }
 
-.main-container .navigation-menu button {
-  color: white;
-  padding: 0.5rem 1rem;
-  background-color: salmon;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer; }
-
 .main-container .interactive-section {
   display: flex;
   padding: 1rem; }
@@ -34,3 +26,32 @@ body {
   padding: 1rem;
   border: rgba(0, 0, 0, 0.219) 1px solid;
   border-radius: 10px; }
+
+.submit-house-section {
+  margin: 1rem;
+  display: flex;
+  justify-content: center; }
+
+.submit-house-section .input-container {
+  width: 50%;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.219) 0px 0px 10px; }
+
+.submit-house-section .input-container div {
+  display: flex;
+  margin-bottom: 2rem; }
+
+.submit-house-section .input-container div input, .submit-house-section .input-container div select {
+  margin-left: 1rem; }
+
+.submit-house-section .input-container div input, .submit-house-section .input-container div select {
+  font-size: 1rem;
+  padding: 0.2rem 1rem; }
+
+button {
+  color: white;
+  padding: 0.5rem 1rem;
+  background-color: salmon;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer; }

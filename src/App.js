@@ -1,6 +1,7 @@
 import NavigationBar from "./components/navigation-menu";
 import { Map } from "./components/map";
-import { SubmitApartmentPage} from "./components/submit-apartment-page"
+import { SubmitApartmentSection } from "./components/submit-apartment-section.jsx";
+import { NavigationMenuBack } from "./components/navigation-menu-back.jsx";
 import "./styles/index.css"
 import {
   BrowserRouter as Router,
@@ -12,14 +13,32 @@ function App() {
   return (
     <div className="main-container">
      <Router>
-     <NavigationBar/>
      <Routes>
-       <Route path="/" element={<Map/>}></Route>
-       <Route path="/submit" element={<SubmitApartmentPage/>}></Route>
+       <Route path="/submit" element={<SubmitHousePage/>}></Route>
+       <Route path="/" element={<HomePage/>}></Route>
      </Routes>
    </Router>
    </div>
   );
+}
+
+const HomePage = () => {
+  return (
+      <section>
+        <NavigationBar/>
+        <Map/>
+      </section>
+
+  )
+}
+
+const SubmitHousePage = () => {
+  return (
+    <section>
+        <NavigationMenuBack/>
+        <SubmitApartmentSection/>
+      </section>
+  )
 }
 
 export default App;

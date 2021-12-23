@@ -4,15 +4,14 @@ import 'firebase/compat/database'
 
 export const ApartmentSection = ({itemId}) => {
     const [note, setNote] = useState()
-
     const fireRef = firebase.database().ref("apartment-list")
 
     useEffect(()=>{
         fireRef.on("value", (snapshot)=>{
             const ListOfnotes = snapshot.val()
-            for (let id in ListOfnotes) {
-                if(id === itemId){
-                    setNote(ListOfnotes[id])
+            for (let i in ListOfnotes) {
+                if(i === itemId){
+                    setNote(ListOfnotes[i])
                 }
             }
         })
@@ -21,7 +20,9 @@ export const ApartmentSection = ({itemId}) => {
         <article className="appartment-list">
             {
                 note && (
-                    note.apartments.map((item, index)=>{
+                    <>
+                    <h1>{note.title}</h1>
+                    {note.apartments.map((item, index)=>{
                         return (
                             <div key={index}>
                                 <h3>{item.price}</h3>
@@ -29,7 +30,8 @@ export const ApartmentSection = ({itemId}) => {
                                 <p>{item.descriptin}</p>
                             </div>
                         )
-                    })
+                    })}
+                    </>
                 )
             }
         </article>

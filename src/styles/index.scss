@@ -8,14 +8,6 @@ body{
         display: flex;
         justify-content: center;
         box-shadow: rgba(0, 0, 0, 0.219) 0px 5px 5px;
-        button{
-            color: white;
-            padding: 0.5rem 1rem;
-            background-color: salmon;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-        }
     }
     .interactive-section{
         display: flex;
@@ -37,4 +29,35 @@ body{
             }
         }
     }
+}
+
+.submit-house-section{
+    margin:1rem;
+    display: flex;
+    justify-content: center;
+    .input-container{
+        width: 50%;
+        padding: 1rem;
+        box-shadow: rgba(0, 0, 0, 0.219) 0px 0px 10px;
+            div{
+                display: flex;
+                margin-bottom: 2rem;
+                input, select{
+                    margin-left: 1rem;
+                }
+                input, select{
+                    font-size: 1rem;
+                    padding: 0.2rem 1rem;
+                }
+        }
+        }
+}
+
+button{
+    color: white;
+    padding: 0.5rem 1rem;
+    background-color: salmon;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
 }
