@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Rent-Out-Application/static/css/main.3e465e84.css",
-    "main.js": "/Rent-Out-Application/static/js/main.c33ad58d.js",
+    "main.css": "/Rent-Out-Application/static/css/main.328dde59.css",
+    "main.js": "/Rent-Out-Application/static/js/main.54399d1a.js",
     "static/js/787.cfd8f164.chunk.js": "/Rent-Out-Application/static/js/787.cfd8f164.chunk.js",
     "index.html": "/Rent-Out-Application/index.html",
-    "main.3e465e84.css.map": "/Rent-Out-Application/static/css/main.3e465e84.css.map",
-    "main.c33ad58d.js.map": "/Rent-Out-Application/static/js/main.c33ad58d.js.map",
+    "main.328dde59.css.map": "/Rent-Out-Application/static/css/main.328dde59.css.map",
+    "main.54399d1a.js.map": "/Rent-Out-Application/static/js/main.54399d1a.js.map",
     "787.cfd8f164.chunk.js.map": "/Rent-Out-Application/static/js/787.cfd8f164.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3e465e84.css",
-    "static/js/main.c33ad58d.js"
+    "static/css/main.328dde59.css",
+    "static/js/main.54399d1a.js"
   ]
 }

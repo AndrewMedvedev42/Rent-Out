@@ -1,4 +1,4 @@
-const HouseState = {id:"-MrX3Xu7t1mD4VLfbrPD"}
+const HouseState = {id:[]}
 
 export const houseReducer = (state=HouseState, action) => {
     switch (action.type){

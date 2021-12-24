@@ -6,9 +6,9 @@ export const SubmitApartmentSection = () => {
     const [houseTitle, setHouseTitle] = useState("HouseTitle4")
     const [coordinates, setCoordinates] = useState("[51.501, -0.082]")
     const houseApartmentList = [
-        {title:"Apartment Name 1", price:"999 $", descriptin:"Lorem ipsum", image:"#"},
-        {title:"Apartment Name 2", price:"77 $", descriptin:"Lorem ipsum", image:"#"},
-        {title:"Apartment Name 3", price:"999 $", descriptin:"Lorem ipsum", image:"#"}
+        {apartmentTitle:"Name 1", price:"999 $", description:"Lorem ipsum", image:"https://a0.muscache.com/pictures/18addcfb-ec25-4bc7-8f04-59e7b5825a58.jpg"},
+        {apartmentTitle:"Name 2", price:"77 $", description:"Lorem ipsum", image:"https://a0.muscache.com/pictures/18addcfb-ec25-4bc7-8f04-59e7b5825a58.jpg"},
+        {apartmentTitle:"Name 3", price:"999 $", description:"Lorem ipsum", image:"https://a0.muscache.com/pictures/18addcfb-ec25-4bc7-8f04-59e7b5825a58.jpg"}
     ]
 
     function idGenerator() {
@@ -22,7 +22,7 @@ export const SubmitApartmentSection = () => {
         const fireRef = firebase.database().ref("apartment-list")
         const data = {
             id:idGenerator(),
-            title:houseTitle,
+            houseTitle:houseTitle,
             coordinates:coordinates,
             apartments:houseApartmentList
             

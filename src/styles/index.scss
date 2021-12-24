@@ -24,8 +24,17 @@ body{
             .appartment-card{
                 margin-top: 1rem;
                 padding: 1rem;
-                border: rgba(0, 0, 0, 0.219) 1px solid;
                 border-radius: 10px;
+                article{
+                    border: rgba(0, 0, 0, 0.219) 1px solid;
+                    img{
+                        width: 100%;
+                    }
+                    h1, h3, p {
+                        margin:1rem;
+                        border: navy 1px solid;
+                    }
+                }
             }
         }
     }
