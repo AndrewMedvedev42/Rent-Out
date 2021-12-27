@@ -6,3 +6,9 @@ export const loadHouse = (id) => async (dispatch) => {
         }
     })
 }
+
+export const deleteHouse = () => async (dispatch) => {
+    dispatch({
+        type:"DELETE_HOUSE"
+    })
+}

@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, useMapEvents, Popup } from 'react-leaflet'
 import { ApartmentSection } from "./appartment-section";
 import firebase from "../util/firebase";
 import { useEffect, useState } from "react";
@@ -7,21 +7,21 @@ import { loadHouse } from "../redux/actions/actions";
 
 export const Map = () => {
     const dispatch = useDispatch()
-    const [arrayOfNote, setArrayOfNote] = useState([])
+    const [listOfHouses, setlistOfHouses] = useState([])
     const houseDetails = useSelector((state) => state.house)
 
     useEffect(()=>{
         const fireRef = firebase.database().ref("apartment-list")
         fireRef.on("value", (snapshot)=>{
-            const ListOfnotes = snapshot.val()
+            const FireBaseHouseList = snapshot.val()
             const array = []
             const idArray = []
-            for (let id in ListOfnotes) {
-                ListOfnotes[id].itemKey = id
-                array.push(ListOfnotes[id])
+            for (let id in FireBaseHouseList) {
+                FireBaseHouseList[id].itemKey = id
+                array.push(FireBaseHouseList[id])
                 idArray.push(id)
             }
-            setArrayOfNote(array)
+            setlistOfHouses(array)
             dispatch(loadHouse(idArray))
         })
     },[])
@@ -29,6 +29,7 @@ export const Map = () => {
     const getHouseInfo = (id) => {
         dispatch(loadHouse([id]))
     }
+
     return (
         <section className="interactive-section">
     `        <MapContainer
@@ -42,11 +43,11 @@ export const Map = () => {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 {
-                    arrayOfNote.length && (
-                        arrayOfNote.map((item, index)=>{
+                    listOfHouses.length && (
+                        listOfHouses.map((item, index)=>{
                             return (
                                 <Marker key={index} 
-                                    position={item.coordinates}
+                                    position={JSON.parse(item.coordinates)}
                                     eventHandlers={{
                                         click: (e) => {
                                             getHouseInfo(item.itemKey)
@@ -66,10 +67,10 @@ export const Map = () => {
 
 function MyComponent() {
     const dispatch = useDispatch()
-    const [zoomLevel, setZoomLevel] = useState(10); // initial zoom level provided for MapContainer
-    const [arrayOfNotes, setArrayOfNotes] = useState([])
+    const [zoomLevel, setZoomLevel] = useState(); 
+    const [listOfHouses2, setlistOfHouses2] = useState([])
 
-    const half = Math.ceil(arrayOfNotes.length / 2); 
+    const half = Math.ceil(listOfHouses2.length / 2); 
     
     const mapEvents = useMapEvents({
         zoomend: () => {
@@ -81,23 +82,23 @@ function MyComponent() {
         
         const fireRef = firebase.database().ref("apartment-list")
         fireRef.on("value", (snapshot)=>{
-            const ListOfnotes = snapshot.val()
+            const FireBaseHouseList = snapshot.val()
             const array = []
-            for (let id in ListOfnotes) {
-                ListOfnotes[id].itemKey = id
+            for (let id in FireBaseHouseList) {
+                FireBaseHouseList[id].itemKey = id
                 array.push(id)
             }
-            setArrayOfNotes(array)
+            setlistOfHouses2(array)
         })
     },[])
 
     useEffect(()=>{
         if (zoomLevel >= 10 && zoomLevel < 13) {
-            dispatch(loadHouse(arrayOfNotes))
+            dispatch(loadHouse(listOfHouses2))
         }else if(zoomLevel > 13 && zoomLevel <= 16){
-            dispatch(loadHouse(arrayOfNotes.slice(0, half)))
+            dispatch(loadHouse(listOfHouses2.slice(0, half)))
         }else if(zoomLevel > 16 && zoomLevel <= 18){
-            dispatch(loadHouse(arrayOfNotes[0]))
+            dispatch(loadHouse(listOfHouses2[0]))
         }
     },[zoomLevel])
 

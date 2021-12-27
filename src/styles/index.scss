@@ -14,25 +14,29 @@ body{
         padding: 1rem;
         .map {
             margin-right: 1rem;
-            width: 70%;
+            width: 80%;
             height: 600px; 
         }
         .appartment-list{
-            width: 30%;
+            overflow-y: auto;
+            width: 20%;
+            height: 500px;
             padding: 1rem;
-            box-shadow: rgba(0, 0, 0, 0.219) 0px 0px 10px;
+            box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px;
+            border:white 10px solid;
+            border-radius: 15px;
             .appartment-card{
-                margin-top: 1rem;
-                padding: 1rem;
-                border-radius: 10px;
+                list-style: none;
                 article{
-                    border: rgba(0, 0, 0, 0.219) 1px solid;
+                    border: rgba(0, 0, 0, 0.25) 1px solid;
+                    border-radius: 15px;
+                    padding: 1rem;
+                    margin-bottom: 2rem;
                     img{
                         width: 100%;
                     }
                     h1, h3, p {
                         margin:1rem;
-                        border: navy 1px solid;
                     }
                 }
             }
@@ -63,6 +67,7 @@ body{
 }
 
 button{
+    margin: 0rem 0.5rem;
     color: white;
     padding: 0.5rem 1rem;
     background-color: salmon;

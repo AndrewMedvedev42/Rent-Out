@@ -5,11 +5,9 @@ import firebase from "../util/firebase";
 import 'firebase/compat/database'
 
 export const ApartmentSection = ({itemIdList}) => {
-    const dispatch = useDispatch()
     const [note, setNote] = useState([])
     const fireRef = firebase.database().ref("apartment-list")
 
-    const newIdList = itemIdList.flat()
     useEffect(()=>{
         fireRef.on("value", (snapshot)=>{
             const ListOfnotes = snapshot.val()

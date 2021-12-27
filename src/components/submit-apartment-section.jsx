@@ -1,15 +1,29 @@
 import firebase from "../util/firebase";
 import { useEffect, useState } from "react";
+import {useNavigate} from "react-router-dom"
 
 export const SubmitApartmentSection = () => {
-
-    const [houseTitle, setHouseTitle] = useState("HouseTitle4")
-    const [coordinates, setCoordinates] = useState("[51.501, -0.082]")
+    const [HouseList, setHouseList] = useState([])
+    const [houseTitle, setHouseTitle] = useState("")
+    const [houseCoordinates, setHouseCoordinates] = useState("[51.5029, -0.08]")
     const houseApartmentList = [
-        {apartmentTitle:"Name 1", price:"999 $", description:"Lorem ipsum", image:"https://a0.muscache.com/pictures/18addcfb-ec25-4bc7-8f04-59e7b5825a58.jpg"},
-        {apartmentTitle:"Name 2", price:"77 $", description:"Lorem ipsum", image:"https://a0.muscache.com/pictures/18addcfb-ec25-4bc7-8f04-59e7b5825a58.jpg"},
-        {apartmentTitle:"Name 3", price:"999 $", description:"Lorem ipsum", image:"https://a0.muscache.com/pictures/18addcfb-ec25-4bc7-8f04-59e7b5825a58.jpg"}
+        {apartmentTitle:"Name 1", 
+            price:"114 $", 
+            description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 
+            image:"https://a0.muscache.com/pictures/18addcfb-ec25-4bc7-8f04-59e7b5825a58.jpg"},
+
+        {apartmentTitle:"Name 2", 
+            price:"254 $", 
+            description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 
+            image:"https://a0.muscache.com/pictures/18addcfb-ec25-4bc7-8f04-59e7b5825a58.jpg"},
+
+        {apartmentTitle:"Name 3", 
+            price:"226 $", 
+            description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", 
+            image:"https://a0.muscache.com/pictures/18addcfb-ec25-4bc7-8f04-59e7b5825a58.jpg"}
     ]
+
+    const history = useNavigate()
 
     function idGenerator() {
         let S4 = () => {
@@ -18,20 +32,46 @@ export const SubmitApartmentSection = () => {
         return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
     }
 
+    useEffect(()=>{
+        const fireRef = firebase.database().ref("apartment-list")
+        fireRef.on("value", (snapshot)=>{
+            const dataBaseListOfHouses = snapshot.val()
+            const array = []
+            for (let id in dataBaseListOfHouses) {
+                dataBaseListOfHouses[id].itemKey = id
+                array.push(dataBaseListOfHouses[id])
+            }
+            setHouseList(array)
+        })
+    },[])
+
+    const isHouseExists = () => {
+        return HouseList.some(item=>item.coordinates === houseCoordinates)
+    }
+
     const submitHouse = () => {
         const fireRef = firebase.database().ref("apartment-list")
-        const data = {
-            id:idGenerator(),
-            houseTitle:houseTitle,
-            coordinates:coordinates,
-            apartments:houseApartmentList
-            
+        if (houseTitle) {
+            if (!isHouseExists()) {
+                const data = {
+                    id:idGenerator(),
+                    houseTitle:houseTitle,
+                    coordinates:houseCoordinates,
+                    apartments:houseApartmentList
+                    
+                }
+                fireRef.push(data)
+                history(-1)
+            }else{
+                alert("House already exists!")
+            }  
+        }else{
+            alert("Please, provide a title")
         }
-        fireRef.push(data)
     }
 
     const chooseCoordinates = (a) => {
-        setCoordinates(JSON.parse(a.target.value))
+        setHouseCoordinates(a.target.value)
     }
 
     return (<section className="submit-house-section">
