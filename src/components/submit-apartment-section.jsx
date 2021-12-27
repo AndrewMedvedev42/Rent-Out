@@ -76,18 +76,19 @@ export const SubmitApartmentSection = () => {
 
     return (<section className="submit-house-section">
                 <div className="input-container">
+                    <h2>Please fill the following</h2>
                     <div>
-                        <label htmlFor="">House Title:</label>
-                        <input type="text" placeholder="title" onChange={(e)=>{setHouseTitle(e.target.value)}}/>
+                        <label htmlFor="">Your house title:</label>
+                        <input type="text" placeholder="Title..." onChange={(e)=>{setHouseTitle(e.target.value)}}/>
                     </div>
                     <div>
-                        <label htmlFor="">House Location:</label>
+                        <label htmlFor="">Choose your house location:</label>
                         <select onChange={chooseCoordinates}>
-                            <option value="[51.5029, -0.08]">House 1</option>
-                            <option value="[51.5035, -0.08758]">House 2</option>
-                            <option value="[51.5015, -0.08758]">House 3</option>
-                            <option value="[51.5023, -0.0896]">House 4</option>
-                            <option value="[51.5011, -0.088]">House 5</option>
+                            <option value="[51.5029, -0.08]">Locaiton A</option>
+                            <option value="[51.5035, -0.08758]">Location B</option>
+                            <option value="[51.5015, -0.08758]">Location C</option>
+                            <option value="[51.5023, -0.0896]">Location D</option>
+                            <option value="[51.5011, -0.088]">Location E</option>
                         </select>
                     </div>
                     <button onClick={submitHouse}>Submit</button>

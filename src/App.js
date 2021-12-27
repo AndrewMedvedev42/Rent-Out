@@ -14,8 +14,8 @@ function App() {
     <div className="main-container">
      <Router>
      <Routes>
-       <Route path="/submit" element={<SubmitHousePage/>}></Route>
-       <Route path="/" element={<HomePage/>}></Route>
+       <Route path="/Rent-Out-Application/submit" element={<SubmitHousePage/>}></Route>
+       <Route path="/Rent-Out-Application" element={<HomePage/>}></Route>
      </Routes>
    </Router>
    </div>
